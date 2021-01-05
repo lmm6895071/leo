@@ -32,7 +32,7 @@ import model
 import utils
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string("checkpoint_path", "/tmp/leo", "Path to restore from and "
+flags.DEFINE_string("checkpoint_path", "/root/lmm/checkpoints", "Path to restore from and "
                     "save to checkpoints.")
 flags.DEFINE_integer(
     "checkpoint_steps", 1000, "The frequency, in number of "
@@ -102,6 +102,8 @@ def construct_graph(outer_model_config):
   tf.logging.info("inner_model_config: {}".format(inner_model_config))
   leo = model.LEO(inner_model_config, use_64bits_dtype=False)
 
+  sys.exit()
+  
   num_classes = outer_model_config["num_classes"]
   num_tr_examples_per_class = outer_model_config["num_tr_examples_per_class"]
   metatrain_batch = _construct_examples_batch(
@@ -205,6 +207,10 @@ def run_training_loop(checkpoint_path):
 
 def main(argv):
   del argv  # Unused.
+  print(config.get_data_config())
+  print(config.get_inner_model_config())
+  print(config.get_outer_model_config())
+
   run_training_loop(FLAGS.checkpoint_path)
 
 

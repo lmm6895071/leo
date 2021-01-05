@@ -23,7 +23,7 @@ from absl import flags
 
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string("data_path", None, "Path to the dataset.")
+flags.DEFINE_string("data_path", "root/lmm/embeddings", "Path to the dataset.")
 flags.DEFINE_string(
     "dataset_name", "miniImageNet", "Name of the dataset to "
     "train on, which will be mapped to data.MetaDataset.")
