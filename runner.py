@@ -21,6 +21,7 @@ from __future__ import print_function
 import functools
 import os
 import pickle
+import sys
 
 from absl import flags
 from six.moves import zip
@@ -102,8 +103,7 @@ def construct_graph(outer_model_config):
   tf.logging.info("inner_model_config: {}".format(inner_model_config))
   leo = model.LEO(inner_model_config, use_64bits_dtype=False)
 
-  sys.exit()
-  
+
   num_classes = outer_model_config["num_classes"]
   num_tr_examples_per_class = outer_model_config["num_tr_examples_per_class"]
   metatrain_batch = _construct_examples_batch(
@@ -113,6 +113,7 @@ def construct_graph(outer_model_config):
   metatrain_loss, metatrain_accuracy = _construct_loss_and_accuracy(
       leo, metatrain_batch, True)
 
+  sys.exit()
   metatrain_gradients, metatrain_variables = leo.grads_and_vars(metatrain_loss)
 
   # Avoids NaNs in summaries.
