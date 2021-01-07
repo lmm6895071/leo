@@ -113,7 +113,7 @@ def construct_graph(outer_model_config):
   metatrain_loss, metatrain_accuracy = _construct_loss_and_accuracy(
       leo, metatrain_batch, True)
 
-  sys.exit()
+  
   metatrain_gradients, metatrain_variables = leo.grads_and_vars(metatrain_loss)
 
   # Avoids NaNs in summaries.
