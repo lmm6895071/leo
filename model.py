@@ -191,7 +191,7 @@ class LEO(snt.AbstractModule):
   @snt.reuse_variables
   def encoder(self, inputs):
     with tf.variable_scope("encoder"):
-      after_dropout = tf.nn.dropout(inputs, rate=self.dropout_rate)
+      after_dropout = tf.nn.dropout(inputs, keep_prob=self.dropout_rate)
       regularizer = tf.contrib.layers.l2_regularizer(self._l2_penalty_weight)
       initializer = tf.initializers.glorot_uniform(dtype=self._float_dtype)
       encoder_module = snt.Linear(
@@ -274,7 +274,7 @@ class LEO(snt.AbstractModule):
     return kl
 
   def predict(self, inputs, weights):
-    after_dropout = tf.nn.dropout(inputs, rate=self.dropout_rate)
+    after_dropout = tf.nn.dropout(inputs, keep_prob=self.dropout_rate)
     # This is 3-dimensional equivalent of a matrix product, where we sum over
     # the last (embedding_dim) dimension. We get [N, K, N, K] tensor as output.
     per_image_predictions = tf.einsum("ijk,lmk->ijlm", after_dropout, weights)
@@ -312,7 +312,7 @@ class LEO(snt.AbstractModule):
 
   @property
   def dropout_rate(self):
-    return self._dropout_rate if self.is_meta_training else 0.0
+    return self._dropout_rate if self.is_meta_training else 0.01
 
   def loss_fn(self, model_outputs, original_classes):
     original_classes = tf.squeeze(original_classes, axis=-1)
