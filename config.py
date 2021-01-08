@@ -71,13 +71,13 @@ flags.DEFINE_integer(
     "num_tr_examples_per_class", 1, "Number of training samples per class, "
     "K in K-shot classification.")
 flags.DEFINE_integer(
-    "num_val_examples_per_class", 15, "Number of validation samples per class "
+    "num_val_examples_per_class", 5, "15 Number of validation samples per class "
     "in a task instance.")
-flags.DEFINE_integer("metatrain_batch_size", 12, "Number of problem instances "
+flags.DEFINE_integer("metatrain_batch_size", 12, "20 Number of problem instances "
                      "in a batch.")
-flags.DEFINE_integer("metavalid_batch_size", 200, "Number of meta-validation "
+flags.DEFINE_integer("metavalid_batch_size", 16, "200 Number of meta-validation "
                      "problem instances.")
-flags.DEFINE_integer("metatest_batch_size", 200, "Number of meta-testing "
+flags.DEFINE_integer("metatest_batch_size", 16, "200 Number of meta-testing "
                      "problem instances.")
 flags.DEFINE_integer("num_steps_limit", int(1e5), "Number of steps to train "
                      "for.")
