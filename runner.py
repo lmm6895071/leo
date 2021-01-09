@@ -33,7 +33,7 @@ import model
 import utils
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string("checkpoint_path", "/root/lmm/checkpoints", "Path to restore from and "
+flags.DEFINE_string("checkpoint_path", "./checkpoints", "Path to restore from and "
                     "save to checkpoints.")
 flags.DEFINE_integer(
     "checkpoint_steps", 200, "The frequency, in number of "

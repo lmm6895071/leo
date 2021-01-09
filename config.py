@@ -23,7 +23,7 @@ from absl import flags
 
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string("data_path", "/root/data/lmm/embeddings", "Path to the dataset.")
+flags.DEFINE_string("data_path", "../embeddings", "Path to the dataset.")
 flags.DEFINE_string(
     "dataset_name", "miniImageNet", "Name of the dataset to "
     "train on, which will be mapped to data.MetaDataset.")
@@ -34,11 +34,11 @@ flags.DEFINE_boolean("train_on_val", False, "Whether to train on the "
                      "validation data.")
 
 flags.DEFINE_integer(
-    "inner_unroll_length", 5, "Number of unroll steps in the "
+    "inner_unroll_length", 2, "Number of unroll steps in the "
     "inner loop of leo (number of adaptation steps in the "
     "latent space).")
 flags.DEFINE_integer(
-    "finetuning_unroll_length", 3, "Number of unroll steps "
+    "finetuning_unroll_length", 2, "Number of unroll steps "
     "in the loop performing finetuning (number of adaptation "
     "steps in the parameter space).")
 flags.DEFINE_integer("num_latents", 64, "The dimensionality of the latent "
