@@ -32,3 +32,31 @@ To construct input pipelines, use the `tf.data` module.
 2021-01-08 04:28:36.212554: E tensorflow/stream_executor/cuda/cuda_driver.cc:868] failed to alloc 4294967296 bytes on host: CUDA_ERROR_INVALID_VALUE: invalid argument
 2021-01-08 04:28:36.313644: W ./tensorflow/core/common_runtime/gpu/cuda_host_allocator.h:44] could not allocate pinned host memory of size: 4294967296
 run.sh: line 2:  8082 Killed                  CUDA_VISIBLE_DEVICES="1,2" python runner.py
+WARNING:tensorflow:From /home/iie/lmm/leo/data.py:294: shuffle_batch (from tensorflow.python.training.input) is deprecated and will be removed in a future version.
+Instructions for updating:
+Queue-based input pipelines have been replaced by `tf.data`. Use `tf.data.Dataset.shuffle(min_after_dequeue).batch(batch_size)`.
+/home/iie/.conda/envs/lmm/lib/python2.7/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+WARNING:tensorflow:From /home/iie/.conda/envs/lmm/lib/python2.7/site-packages/tensorflow/python/training/input.py:751: __init__ (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+To construct input pipelines, use the `tf.data` module.
+WARNING:tensorflow:From /home/iie/.conda/envs/lmm/lib/python2.7/site-packages/tensorflow/python/training/input.py:751: add_queue_runner (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+To construct input pipelines, use the `tf.data` module.
+WARNING:tensorflow:From /home/iie/lmm/leo/model.py:251: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+/home/iie/.conda/envs/lmm/lib/python2.7/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/iie/.conda/envs/lmm/lib/python2.7/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+2021-01-09 23:18:59.097756: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2021-01-09 23:19:00.269686: E tensorflow/stream_executor/cuda/cuda_driver.cc:300] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2021-01-09 23:19:00.269746: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:163] retrieving CUDA diagnostic information for host: iielct-2288H-V5
+2021-01-09 23:19:00.269760: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:170] hostname: iielct-2288H-V5
+2021-01-09 23:19:00.269815: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:194] libcuda reported version is: 430.64.0
+2021-01-09 23:19:00.269852: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:198] kernel reported version is: 430.64.0
+2021-01-09 23:19:00.269864: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:305] kernel version seems to match DSO: 430.64.0
+WARNING:tensorflow:From /home/iie/.conda/envs/lmm/lib/python2.7/site-packages/tensorflow/python/training/monitored_session.py:804: start_queue_runners (from tensorflow.python.training.queue_runner_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+To construct input pipelines, use the `tf.data` module.
