@@ -36,7 +36,7 @@ FLAGS = flags.FLAGS
 flags.DEFINE_string("checkpoint_path", "/root/lmm/checkpoints", "Path to restore from and "
                     "save to checkpoints.")
 flags.DEFINE_integer(
-    "checkpoint_steps", 1000, "The frequency, in number of "
+    "checkpoint_steps", 200, "The frequency, in number of "
     "steps, of saving the checkpoints.")
 flags.DEFINE_boolean("evaluation_mode", False, "Whether to run in an "
                      "evaluation-only mode.")
@@ -161,7 +161,7 @@ def run_training_loop(checkpoint_path):
   tf.logging.info("outer_model_config: {}".format(outer_model_config))
   (train_op, global_step, metatrain_accuracy, metavalid_accuracy,
    metatest_accuracy) = construct_graph(outer_model_config)
-
+  print("---------------------------------------------------------")
   num_steps_limit = outer_model_config["num_steps_limit"]
   best_metavalid_accuracy = 0.
 
@@ -173,6 +173,7 @@ def run_training_loop(checkpoint_path):
       summary_dir=checkpoint_path) as sess:
     if not FLAGS.evaluation_mode:
       global_step_ev = sess.run(global_step)
+      print("global_step ==============={}",format(global_step_ev))
       while global_step_ev < num_steps_limit:
         if global_step_ev % FLAGS.checkpoint_steps == 0:
           # Just after saving checkpoint, calculate accuracy 10 times and save

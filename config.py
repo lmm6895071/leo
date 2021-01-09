@@ -38,7 +38,7 @@ flags.DEFINE_integer(
     "inner loop of leo (number of adaptation steps in the "
     "latent space).")
 flags.DEFINE_integer(
-    "finetuning_unroll_length", 5, "Number of unroll steps "
+    "finetuning_unroll_length", 3, "Number of unroll steps "
     "in the loop performing finetuning (number of adaptation "
     "steps in the parameter space).")
 flags.DEFINE_integer("num_latents", 64, "The dimensionality of the latent "
