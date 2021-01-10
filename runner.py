@@ -33,7 +33,7 @@ import model
 import utils
 
 FLAGS = flags.FLAGS
-flags.DEFINE_string("checkpoint_path", "checkpoints", "Path to restore from and "
+flags.DEFINE_string("checkpoint_path", "../checkpoints", "Path to restore from and "
                     "save to checkpoints.")
 flags.DEFINE_integer(
     "checkpoint_steps", 200, "The frequency, in number of "
@@ -190,17 +190,17 @@ def run_training_loop(checkpoint_path):
 
         _, global_step_ev, metatrain_accuracy_ev = sess.run(
             [train_op, global_step, metatrain_accuracy])
-        if global_step_ev % (FLAGS.checkpoint_steps // 2) == 0:
-          tf.logging.info("Step: {} meta-train accuracy: {}".format(
+        #if global_step_ev % (FLAGS.checkpoint_steps // 2) == 0:
+        tf.logging.info("Step: {} meta-train accuracy: {}".format(
               global_step_ev, metatrain_accuracy_ev))
     else:
-      assert not FLAGS.checkpoint_steps
+      #assert not FLAGS.checkpoint_steps
       num_metatest_estimates = (
           10000 // outer_model_config["metatest_batch_size"])
 
       test_accuracy = utils.evaluate_and_average(sess, metatest_accuracy,
                                                  num_metatest_estimates)
-
+      print("=====================",test_accuracy)
       tf.logging.info("Metatest accuracy: %f", test_accuracy)
       with tf.gfile.Open(
           os.path.join(checkpoint_path, "test_accuracy"), "wb") as f:
@@ -209,10 +209,11 @@ def run_training_loop(checkpoint_path):
 
 def main(argv):
   del argv  # Unused.
+  tf.logging.set_verbosity(tf.logging.INFO)
   print(config.get_data_config())
   print(config.get_inner_model_config())
   print(config.get_outer_model_config())
-
+  
   run_training_loop(FLAGS.checkpoint_path)
 
 

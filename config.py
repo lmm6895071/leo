@@ -34,11 +34,11 @@ flags.DEFINE_boolean("train_on_val", False, "Whether to train on the "
                      "validation data.")
 
 flags.DEFINE_integer(
-    "inner_unroll_length", 2, "Number of unroll steps in the "
+    "inner_unroll_length", 5, "Number of unroll steps in the "
     "inner loop of leo (number of adaptation steps in the "
     "latent space).")
 flags.DEFINE_integer(
-    "finetuning_unroll_length", 2, "Number of unroll steps "
+    "finetuning_unroll_length", 5, "Number of unroll steps "
     "in the loop performing finetuning (number of adaptation "
     "steps in the parameter space).")
 flags.DEFINE_integer("num_latents", 64, "The dimensionality of the latent "
@@ -71,15 +71,15 @@ flags.DEFINE_integer(
     "num_tr_examples_per_class", 1, "Number of training samples per class, "
     "K in K-shot classification.")
 flags.DEFINE_integer(
-    "num_val_examples_per_class", 5, "15 Number of validation samples per class "
+    "num_val_examples_per_class", 15, "15 Number of validation samples per class "
     "in a task instance.")
-flags.DEFINE_integer("metatrain_batch_size", 12, "20 Number of problem instances "
+flags.DEFINE_integer("metatrain_batch_size", 20, "20 Number of problem instances "
                      "in a batch.")
-flags.DEFINE_integer("metavalid_batch_size", 16, "200 Number of meta-validation "
+flags.DEFINE_integer("metavalid_batch_size", 20, "200 Number of meta-validation "
                      "problem instances.")
 flags.DEFINE_integer("metatest_batch_size", 16, "200 Number of meta-testing "
                      "problem instances.")
-flags.DEFINE_integer("num_steps_limit", int(1e5), "Number of steps to train "
+flags.DEFINE_integer("num_steps_limit", int(1.3e5), "Number of steps to train "
                      "for.")
 flags.DEFINE_float("outer_lr", 1e-4, "Outer (metatraining) loop learning "
                    "rate.")
